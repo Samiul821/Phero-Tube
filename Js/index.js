@@ -23,7 +23,7 @@ function displayCategories(categories) {
     // create Element
     const categoriyDiv = document.createElement("div");
     categoriyDiv.innerHTML = `
-    <button class="btn bg-[#25252515] hover:bg-[#FF1F3D] text-lg hover:text-white text-[#252525b2]">${cat.category}</button>
+    <button class="btn bg-[#25252515] hover:bg-[#FF1F3D] rounded py-[5px] px-[10px] md:py-[10px] md:px-5 md:text-lg hover:text-white text-[#252525b2]">${cat.category}</button>
     `;
 
     // Append the Element
