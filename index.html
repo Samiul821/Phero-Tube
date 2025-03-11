@@ -4,11 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phero Tube</title>
+    <!-- daisyUI cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>PH Tube</title>
+
+    <style>
+        .inter-font {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+
 </head>
 
-<body>
-
+<body class="inter-font">
+<header>
+    <nav class="w-11/12 mx-auto pb-[29px] flex justify-between items-center mt-10 border-b-2 border-[rgba(23,23,23,0.20)]">
+        <div class="logo">
+            <img src="Logo.png" alt="Logo">
+        </div>
+        <div class="sort">
+            <button class="bg-[rgba(37,37,37,0.20)] py-[10px] px-5 rounded text-[#252525] text-lg font-medium">Sort by view</button>
+        </div>
+        <div class="blogs">
+            <button class="bg-[#FF1F3D] py-[10px] px-5 rounded text-white text-lg font-medium">Blog</button>
+        </div>
+    </nav>
+</header>
 </body>
 
 </html>
