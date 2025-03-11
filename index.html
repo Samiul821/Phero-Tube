@@ -24,19 +24,33 @@
 </head>
 
 <body class="inter-font">
-<header>
-    <nav class="w-11/12 mx-auto pb-[29px] flex justify-between items-center mt-10 border-b-2 border-[rgba(23,23,23,0.20)]">
-        <div class="logo">
-            <img src="Logo.png" alt="Logo">
-        </div>
-        <div class="sort">
-            <button class="bg-[rgba(37,37,37,0.20)] py-[10px] px-5 rounded text-[#252525] text-lg font-medium">Sort by view</button>
-        </div>
-        <div class="blogs">
-            <button class="bg-[#FF1F3D] py-[10px] px-5 rounded text-white text-lg font-medium">Blog</button>
-        </div>
+    <header>
+        <nav
+            class="md:w-11/12 sm:w-[480px] mx-auto pb-[29px] flex justify-around md:justify-between items-center mt-10 border-b-2 border-[#17171720] mb-[35px]">
+            <div class="logo">
+                <img class="w-[100px] h-[20px] md:w-[175px] md:h-[39px] cursor-pointer" src="Logo.png" alt="Logo">
+            </div>
+            <div class="sort">
+                <button
+                    class="cursor-pointer bg-[rgba(37,37,37,0.20)] py-[5px] px-[10px] md:py-[10px] md:px-5 rounded text-[#252525] md:text-lg md:font-medium">Sort
+                    by view</button>
+            </div>
+            <div class="blogs">
+                <button
+                    class="cursor-pointer bg-[#FF1F3D] py-[5px] px-[10px] md:py-[10px] md:px-5 rounded text-white md:text-lg md:font-medium">Blog</button>
+            </div>
+        </nav>
+    </header>
+
+    <nav id="categoriy-container" class="flex justify-center space-x-2 md:space-x-6">
+        <button class="btn bg-[#25252515] text-lg text-[#252525b2]">All</button>
+        <button class="btn bg-[#25252515] text-lg text-[#252525b2]">Music</button>
+        <button class="btn bg-[#25252515] text-lg text-[#252525b2]">Comedy</button>
+        <button class="btn bg-[#25252515] text-lg text-[#252525b2]">Drawing</button>
+
     </nav>
-</header>
+
+    <script src="Js/index.js"></script>
 </body>
 
 </html>
