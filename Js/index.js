@@ -1,3 +1,12 @@
+function removeActiveClass() {
+  const activeButtons = document.getElementsByClassName("active");
+
+  for (let btn of activeButtons) {
+    btn.classList.remove("active");
+  }
+  console.log(activeButtons);
+}
+
 function loadCategories() {
   // fetch the data
 
@@ -10,16 +19,25 @@ function loadCategories() {
 function loadVideos() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((response) => response.json())
-    .then((data) => displayVideos(data.videos));
+    .then((data) => {
+      document.getElementById("btn-all").classList.add("active")
+      displayVideos(data.videos)
+    });
 }
 
 const loadCategoriyVideos = (id) => {
   const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
-  console.log(url);
+  // console.log(url);
 
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayVideos(data.category));
+    .then((data) => {
+      removeActiveClass();
+      // no active class
+      const clikedButton = document.getElementById(`btn-${id}`);
+      clikedButton.classList.add("active");
+      displayVideos(data.category);
+    });
 };
 
 // {
@@ -38,7 +56,7 @@ function displayCategories(categories) {
     // create Element
     const categoriyDiv = document.createElement("div");
     categoriyDiv.innerHTML = `
-    <button onclick="loadCategoriyVideos(${cat.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] rounded py-[5px] px-[10px] md:py-[10px] md:px-5 md:text-lg hover:text-white text-[#252525b2]">${cat.category}</button>
+    <button id="btn-${cat.category_id}" onclick="loadCategoriyVideos(${cat.category_id})" class="btn bg-[#25252515] hover:bg-[#FF1F3D] rounded py-[5px] px-[10px] md:py-[10px] md:px-5 md:text-lg hover:text-white text-[#252525b2]">${cat.category}</button>
     `;
 
     // Append the Element
@@ -71,9 +89,19 @@ const displayVideos = (videos) => {
 
   videoContainer.innerHTML = "";
 
+  if (videos.length == 0) {
+    videoContainer.innerHTML = `
+     <div class="col-span-full flex flex-col justify-center items-center py-[180px]">
+            <img class="mb-8 w-[140px]" src="Icon.png" alt="">
+            <h1 class="text-[32px] font-bold text-center">Oops!! Sorry, There is no <br> content here</h1>
+        </div>
+    `;
+    return;
+  }
+
   // Loop operation on Array of object
   videos.forEach((video) => {
-    console.log(video);
+    // console.log(video);
     // element create
     const videoCard = document.createElement("div");
 

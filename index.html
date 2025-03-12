@@ -19,6 +19,10 @@
         .inter-font {
             font-family: "Inter", sans-serif;
         }
+        .active{
+            background-color: #FF1F3D;
+            color: white;
+        }
     </style>
 
 </head>
@@ -44,12 +48,17 @@
 
     <nav id="categoriy-container" class="flex justify-center space-x-2 md:space-x-6 mb-10">
         <div>
-            <button onclick="loadVideos()" class="btn py-[5px] px-[10px] md:py-[10px] md:px-5 md:text-lg text-white bg-[#FF1F3D] ">All</button>
+            <button id="btn-all" onclick="loadVideos()"
+                class="btn py-[5px] px-[10px] md:py-[10px] md:px-5 md:text-lg bg-[#25252515] text-[#252525b2] hover:bg-[#FF1F3D] hover:text-white">All</button>
         </div>
     </nav>
 
     <section id="video-container" class="w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
 
+        <div class="col-span-full flex flex-col justify-center items-center py-[180px]">
+            <img class="mb-8 w-[140px]" src="Icon.png" alt="">
+            <h1 class="text-[32px] font-bold text-center">Oops!! Sorry, There is no <br> content here</h1>
+        </div>
     </section>
 
     <script src="Js/index.js"></script>
