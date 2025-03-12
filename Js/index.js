@@ -16,8 +16,8 @@ function loadCategories() {
     .then((data) => displayCategories(data.categories));
 }
 
-function loadVideos() {
-  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+function loadVideos(searchText = "") {
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
     .then((response) => response.json())
     .then((data) => {
       removeActiveClass();
@@ -136,7 +136,9 @@ const displayVideos = (videos) => {
     videoCard.innerHTML = `
    <div class="card bg-base-100">
             <figure class="relative mb-4">
-                <img class="w-full h-[250px] object-cover" src="${video.thumbnail}" alt="" />
+                <img class="w-full h-[250px] object-cover" src="${
+                  video.thumbnail
+                }" alt="" />
                 <span class="absolute bottom-2 right-2 bg-[#171717] py-1 px-[5px] text-white text-[10px] rounded">3hrs
                     56 min ago</span>
             </figure>
@@ -150,19 +152,34 @@ const displayVideos = (videos) => {
                     </div>
                 </div>
                 <div class="intro">
-                    <h1 class="text-[#171717] font-bold mb-2">${video.title}</h1>
+                    <h1 class="text-[#171717] font-bold mb-2">${
+                      video.title
+                    }</h1>
                     <p class="text-sm text-[#17171770] mb-1 flex gap-1">
                     ${video.authors[0].profile_name}
-                    ${video.authors[0].verified == true ? `<img class="w-5 h-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt="">` : ``}
+                    ${
+                      video.authors[0].verified == true
+                        ? `<img class="w-5 h-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt="">`
+                        : ``
+                    }
                     </p>
-                    <p class="text-sm text-[#17171770]">${video.others.views} views</p>
+                    <p class="text-sm text-[#17171770]">${
+                      video.others.views
+                    } views</p>
                 </div>
             </div>
-            <button onclick="loadVideoDetails('${video.video_id}')" class="btn btn-block">Show Details</button>
+            <button onclick="loadVideoDetails('${
+              video.video_id
+            }')" class="btn btn-block">Show Details</button>
         </div>
    `;
     videoContainer.appendChild(videoCard);
   });
 };
+
+document.getElementById("search-input").addEventListener("keyup", (e) => {
+  const input = e.target.value;
+  loadVideos(input)
+});
 
 loadCategories();
